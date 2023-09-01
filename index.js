@@ -11,6 +11,15 @@ const key2='dd1bff40admshdbc159e88f58ef8p1a064bjsn0b2d2bccaa72';
 app.use(express.json());
 app.use(express.static(path.join(__dirname + "/public")))
 
+const corsOptions = {
+  origin: 'https://b-musicvd.onrender.com',
+  optionsSuccessStatus: 200, // Some legacy browsers (e.g., IE 11) may require a status code 200
+};
+
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "/public")));
+app.use(cors(corsOptions));
+
 app.get('/get-audio', async (req, res) => {
   const search = req.query.music;
   console.log(search);
